@@ -1,6 +1,6 @@
 package com.distribuida.controller;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
@@ -23,8 +23,12 @@ public class DevolucionesController {
 
     @GetMapping("/findAll") // path secundario
     public String findAll(Model model) {
-        List<Devoluciones> devoluciones = devolucionesDAO.findAll();
-        model.addAttribute("keyDevoluciones", devoluciones);
+    	
+    	
+		List<Devoluciones> devoluciones = devolucionesDAO.findAll();
+        model.addAttribute("devoluciones", devoluciones);
+        
+        
         return "listar-devoluciones"; //nombre del formulario EJ.listar-devoluciones.html o listar-devoluciones.jsp
     }
 
@@ -32,9 +36,10 @@ public class DevolucionesController {
     public String findOne(@RequestParam("idDevolucion") @Nullable Integer idDevolucion,
                           @RequestParam("opcion") @Nullable Integer opcion,
                           Model model) {
+    	
         if (idDevolucion != null) {
-            Devoluciones devolucion = devolucionesDAO.findOne(idDevolucion);
-            model.addAttribute("devolucion", devolucion);
+            Devoluciones devoluciones = devolucionesDAO.findOne(idDevolucion);
+            model.addAttribute("devoluciones", devoluciones);
         }
         if (opcion == 1) return "add-devoluciones"; //Actualizacion
         else return "del-devoluciones"; //Eliminación
@@ -42,25 +47,30 @@ public class DevolucionesController {
 
     @PostMapping("/add")
     public String add(@RequestParam("idDevolucion") @Nullable Integer idDevolucion,
-                      @RequestParam("idPedido") @Nullable Integer idPedido,
+                      @RequestParam("IdPedido") @Nullable Integer idPedido,
                       @RequestParam("fechaDevolucion") @Nullable Date fechaDevolucion,
                       @RequestParam("motivo") @Nullable String motivo,
                       Model model) {
         if (idDevolucion == null) {
-            Devoluciones devolucion = new Devoluciones(0, fechaDevolucion, motivo);
-            devolucion.setIdPedido(idPedido);
-            devolucionesDAO.add(devolucion);
+            Devoluciones devoluciones = new Devoluciones(0, fechaDevolucion, motivo);
+            devolucionesDAO.add(devoluciones);
         } else {
-            Devoluciones devolucion = new Devoluciones(idDevolucion, fechaDevolucion, motivo);
-            devolucion.setIdPedido(idPedido);
-            devolucionesDAO.up(devolucion);
+            Devoluciones devoluciones = new Devoluciones(idDevolucion, fechaDevolucion, motivo);
+            devolucionesDAO.up(devoluciones);
         }
         return "redirect:/devoluciones/findAll"; //ir a formulario web por path o url.
     }
 
     @GetMapping("/del")
     public String del(@RequestParam("idDevolucion") @Nullable Integer idDevolucion) {
-        devolucionesDAO.del(idDevolucion);
+    	//try {
+    	
+    	devolucionesDAO.del(idDevolucion);
         return "redirect:/devoluciones/findAll";
+        
+		//} catch (Exception e) {
+			// TODO: handle exception
+	//	}
+        
     }
 }

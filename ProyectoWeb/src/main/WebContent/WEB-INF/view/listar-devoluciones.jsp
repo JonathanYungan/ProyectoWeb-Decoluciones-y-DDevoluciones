@@ -10,14 +10,13 @@
 <body>
         <h1> Devoluciones </h1>
         
-        <button onclick="window.location.href='/tu-ruta-de-proyecto/devoluciones/findOne?opcion=1';return false;">
-         Agregar
+ <button onclick="window.location.href='/ProyectoWeb/devoluciones/findOne?opcion=1';return false ;">         Agregar
         </button>
         
         <table>
            <thead>
                 <tr>
-                    <th> Id Devolución</th>
+                    <th> Id Devolucion</th>
                     <th> Id Pedido</th>
                     <th> Fecha de Devolución</th>
                     <th> Motivo</th>
@@ -32,12 +31,12 @@
                     <td> ${item.fechaDevolucion}</td>
                     <td> ${item.motivo}</td>
                     <td> 
-                          <button onclick="window.location.href='/tu-ruta-de-proyecto/devoluciones/findOne?idDevolucion=${item.idDevolucion}&opcion=1';return false;">
-                          Actualizar
-                          </button>
-                          <button onclick="window.location.href='/tu-ruta-de-proyecto/devoluciones/findOne?idDevolucion=${item.idDevolucion}&opcion=2';return false;">
-                          Eliminar
-                          </button>             
+					<button onclick="window.location.href='/ProyectoWeb/devoluciones/findOne?idDevolucion=${item.idDevolucion}&opcion=1';return false">
+					Actualizar
+					                          </button>
+					<button onclick="window.location.href='/ProyectoWeb/devoluciones/findOne?idDevolucion=${item.idDevolucion}&opcion=2';return false">                          
+					 Eliminar
+                     </button>             
                     </td>
                </tr>
             </c:forEach>
