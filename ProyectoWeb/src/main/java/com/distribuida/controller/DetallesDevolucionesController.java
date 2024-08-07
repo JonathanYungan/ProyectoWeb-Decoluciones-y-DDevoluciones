@@ -23,7 +23,7 @@ public class DetallesDevolucionesController {
     @GetMapping("/findAll") // path secundario
     public String findAll(Model model) {
         List<DetallesDevoluciones> detallesDevoluciones = detallesDevolucionesDAO.findAll();
-        model.addAttribute("keyDetallesDevoluciones", detallesDevoluciones);
+        model.addAttribute("DetallesDevoluciones", detallesDevoluciones);
         return "listar-detallesdevoluciones"; //nombre del formulario EJ.listar-detallesdevoluciones.html o listar-detallesdevoluciones.jsp
     }
 
