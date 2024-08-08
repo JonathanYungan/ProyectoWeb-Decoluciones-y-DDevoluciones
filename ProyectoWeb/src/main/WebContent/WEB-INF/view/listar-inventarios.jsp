@@ -10,7 +10,8 @@
 <body>
         <h1> Inventarios </h1>
         
- <button onclick="window.location.href='/ProyectoWeb/inventario/findOne?opcion=1';return false ;">Agregar</button>
+ <button onclick="window.location.href='/ProyectoWeb/inventarios/findOne?opcion=1';return false ;">
+ Agregar</button>
         
         <table>
            <thead>
@@ -30,8 +31,8 @@
                     <td> ${item.idBodega}</td>
                     <td> ${item.cantidad}</td>
                     <td> 
-                    <button onclick="window.location.href='/ProyectoWeb/inventario/findOne?idInventario=${item.idInventario}&opcion=1';return false">Actualizar</button>
-                    <button onclick="window.location.href='/ProyectoWeb/inventario/findOne?idInventario=${item.idInventario}&opcion=2';return false">Eliminar</button>             
+                    <button onclick="window.location.href='/ProyectoWeb/inventarios/findOne?idInventario=${item.idInventario}&opcion=1';return false">Actualizar</button>
+                    <button onclick="window.location.href='/ProyectoWeb/inventarios/findOne?idInventario=${item.idInventario}&opcion=2';return false">Eliminar</button>             
                     </td>
                </tr>
             </c:forEach>
