@@ -5,10 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Inventario</title>
+<title>Inventarios</title>
 </head>
 <body>
-        <h1> Inventario </h1>
+        <h1> Inventarios </h1>
         
  <button onclick="window.location.href='/ProyectoWeb/inventario/findOne?opcion=1';return false ;">Agregar</button>
         
@@ -19,16 +19,16 @@
                     <th> Id Producto</th>
                     <th> Id Bodega</th>
                     <th> Cantidad</th>
-                    <th> Acciones</th>
+                    
                </tr>
         </thead>
         <tbody>
            <c:forEach var="item" items="${inventarios}">
                 <tr> 
                     <td> ${item.idInventario}</td>
-                    <td> ${item.IdProducto}</td>
-                    <td> ${item.IdBodega}</td>
-                    <td> ${item.Cantidad}</td>
+                    <td> ${item.idProducto}</td>
+                    <td> ${item.idBodega}</td>
+                    <td> ${item.cantidad}</td>
                     <td> 
                     <button onclick="window.location.href='/ProyectoWeb/inventario/findOne?idInventario=${item.idInventario}&opcion=1';return false">Actualizar</button>
                     <button onclick="window.location.href='/ProyectoWeb/inventario/findOne?idInventario=${item.idInventario}&opcion=2';return false">Eliminar</button>             

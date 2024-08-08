@@ -11,18 +11,18 @@
 
 <form action="add" method="post">
 
-    <input type="hidden" id="idDevolucion" name="idDevolucion" value="${devolucion.idDevolucion}" />
+    <input type="hidden" id="idDevolucion" name="idDevolucion" value="${devoluciones.idDevolucion}" />
     
     Id Pedido
-    <input type="text" id="idPedido" name="idPedido" value="${devolucion.idPedido}" />
+    <input type="text" id="idPedido" name="idPedido" value="${devoluciones.idPedido}" />
     <br/>
     
     Fecha de Devolución
-    <input type="date" id="fechaDevolucion" name="fechaDevolucion" value="${devolucion.fechaDevolucion}" />
+    <input type="date" id="fechaDevolucion" name="fechaDevolucion" value="${devoluciones.fechaDevolucion}" />
     <br/>
     
     Motivo
-    <input type="text" id="motivo" name="motivo" value="${devolucion.motivo}" />
+    <input type="text" id="motivo" name="motivo" value="${devoluciones.motivo}" />
     <br/>
     
     <button type="submit">Guardar</button>
