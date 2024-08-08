@@ -1,11 +1,13 @@
 package com.distribuida.controller;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -48,14 +50,18 @@ public class DevolucionesController {
     @PostMapping("/add")
     public String add(@RequestParam("idDevolucion") @Nullable Integer idDevolucion,
                       @RequestParam("IdPedido") @Nullable Integer idPedido,
-                      @RequestParam("fechaDevolucion") @Nullable Date fechaDevolucion,
+                      @RequestParam("fechaDevolucion") @Nullable String fechaDevolucion,
                       @RequestParam("motivo") @Nullable String motivo,
-                      Model model) {
+                      ModelMap modelMap) {
+    	
+    	 LocalDate fecha = LocalDate.parse(fechaDevolucion);
+         Date fechaSql = java.sql.Date.valueOf(fecha);
+    	
         if (idDevolucion == null) {
-            Devoluciones devoluciones = new Devoluciones(0, fechaDevolucion, motivo);
+            Devoluciones devoluciones = new Devoluciones(0, fechaSql, motivo);
             devolucionesDAO.add(devoluciones);
         } else {
-            Devoluciones devoluciones = new Devoluciones(idDevolucion, fechaDevolucion, motivo);
+            Devoluciones devoluciones = new Devoluciones(idDevolucion, fechaSql, motivo);
             devolucionesDAO.up(devoluciones);
         }
         return "redirect:/devoluciones/findAll"; //ir a formulario web por path o url.

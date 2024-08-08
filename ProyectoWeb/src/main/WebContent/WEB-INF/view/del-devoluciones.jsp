@@ -18,7 +18,7 @@
     
     <button type="submit">Eliminar</button>
     
-    <button onclick="window.location.href='/tu-ruta-de-proyecto/devoluciones/findAll';return false;">
+    <button onclick="window.location.href='/Proyectoweb/devoluciones/findAll';return false;">
     Cancelar
     </button>
 </form>
