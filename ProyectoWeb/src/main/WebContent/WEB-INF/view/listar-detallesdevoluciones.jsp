@@ -10,7 +10,7 @@
 <body>
         <h1> Detalles Devoluciones </h1>
         
-        <button onclick="window.location.href='/tu-ruta-de-proyecto/detallesdevoluciones/findOne?opcion=1';return false;">
+        <button onclick="window.location.href='/ProyectoWeb/detallesdevoluciones/findOne?opcion=1';return false;">
          Agregar
         </button>
         
@@ -26,7 +26,7 @@
                </tr>
         </thead>
         <tbody>
-           <c:forEach var="item" items="${detallesDevoluciones}">
+           <c:forEach var="item" items="${DetallesDevoluciones}">
                 <tr> 
                     <td> ${item.idDetalleDevolucion}</td>
                     <td> ${item.idDevolucion}</td>
@@ -34,10 +34,10 @@
                     <td> ${item.cantidad}</td>
                     <td> ${item.precioUnitario}</td>
                     <td> 
-                          <button onclick="window.location.href='/tu-ruta-de-proyecto/detallesdevoluciones/findOne?idDetalleDevolucion=${item.id_detalle_devolucion}&opcion=1';return false;">
+                          <button onclick="window.location.href='/ProyectoWeb/detallesdevoluciones/findOne?idDetalleDevolucion=${item.idDetalleDevolucion}&opcion=1';return false;">
                           Actualizar
                           </button>
-                          <button onclick="window.location.href='/tu-ruta-de-proyecto/detallesdevoluciones/findOne?idDetalleDevolucion=${item.id_detalle_devolucion}&opcion=2';return false;">
+                          <button onclick="window.location.href='/ProyectoWeb/detallesdevoluciones/findOne?idDetalleDevolucion=${item.idDetalleDevolucion}&opcion=2';return false;">
                           Eliminar
                           </button>             
                     </td>

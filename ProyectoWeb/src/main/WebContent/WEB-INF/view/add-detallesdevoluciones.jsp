@@ -31,7 +31,7 @@
     
     <button type="submit">Guardar</button>
     
-    <button onclick="window.location.href='/tu-ruta-de-proyecto/detallesdevoluciones/findAll';return false;">
+    <button onclick="window.location.href='/ProyectoWeb/detallesdevoluciones/findAll';return false;">
     Cancelar
     </button>
     

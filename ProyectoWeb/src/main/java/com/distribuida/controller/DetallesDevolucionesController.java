@@ -15,6 +15,7 @@ import com.distribuida.entities.DetallesDevoluciones;
 
 @Controller
 @RequestMapping("/detallesdevoluciones") //path Principal
+
 public class DetallesDevolucionesController {
 
     @Autowired
@@ -22,8 +23,10 @@ public class DetallesDevolucionesController {
 
     @GetMapping("/findAll") // path secundario
     public String findAll(Model model) {
+    	
         List<DetallesDevoluciones> detallesDevoluciones = detallesDevolucionesDAO.findAll();
         model.addAttribute("DetallesDevoluciones", detallesDevoluciones);
+        
         return "listar-detallesdevoluciones"; //nombre del formulario EJ.listar-detallesdevoluciones.html o listar-detallesdevoluciones.jsp
     }
 
