@@ -12,7 +12,7 @@ import com.distribuida.entities.Inventarios;
 
 
 @Repository
-public class InventariosDAOImpl {
+public class InventariosDAOImpl implements InventariosDAO{
 
 	@Autowired
 	private SessionFactory sessionFactory;
