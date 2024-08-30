@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Detalles Devoluciones</title>
+    <title>Devoluciones</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css" />
     <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap-table.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -17,21 +17,35 @@
         h1 {
             margin-bottom: 20px;
             text-align: center;
-            color: #343a40;
-            animation: bounceIn 1s ease;
+            color: #fff;
+            background: linear-gradient(90deg, #8fd3c1, #81c3d7);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 128, 0, 0.5);
+            animation: fadeIn 1s ease-in-out, bounce 1.5s infinite;
+            font-family: 'Georgia', serif;
         }
 
-        @keyframes bounceIn {
-            0% {
+        @keyframes fadeIn {
+            from {
                 opacity: 0;
-                transform: scale(0.5);
+                transform: translateY(-50px);
             }
-            50% {
+            to {
                 opacity: 1;
-                transform: scale(1.1);
+                transform: translateY(0);
             }
-            100% {
-                transform: scale(1);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
             }
         }
 
@@ -44,6 +58,7 @@
             width: 300px;
             margin-right: 10px;
             transition: all 0.3s ease;
+            font-family: 'Georgia', serif;
         }
         .search-container input:focus {
             box-shadow: 0px 0px 10px #007bff;
@@ -53,23 +68,14 @@
             padding: 15px;
             border-radius: 8px;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-            position: relative;
+            overflow-x: auto; /* Permite scroll horizontal si es necesario */
         }
         .table-scroll {
+            max-height: 400px; /* Ajusta la altura máxima del scroll vertical */
             overflow-y: auto;
-            max-height: 400px;
-            border-radius: 8px;
-            border: 1px solid #dee2e6;
         }
-        .table thead th {
-            background-color: #f8f9fa;
-            color: #343a40;
-            position: sticky;
-            top: 0;
-            z-index: 2;
-        }
-        .table tbody tr:hover {
-            background-color: #c7eb7a; /* Sombreado verde claro */
+        .table-striped tbody tr:hover {
+            background-color: #c7eb7a !important; /* Sombreado verde claro */
         }
         .btn-primary, .btn-success, .btn-danger {
             transition: background-color 0.3s ease, transform 0.3s ease;
@@ -92,7 +98,7 @@
 
 <section class="px-5 py-5">
     <div class="container">
-        <h1>Detalles Devoluciones</h1>
+        <h1>Devoluciones</h1>
         <div class="search-container">
             <input type="text" id="searchInput" class="form-control" placeholder="Buscar en la tabla...">
             <button class="btn btn-primary" onclick="window.location.href='/ProyectoWeb/devoluciones/findOne?opcion=1'; return false;">
@@ -102,14 +108,17 @@
      
         <div class="table-container">
             <div class="table-scroll">
-                <table id="tablaDevoluciones" class="table table-striped table-sm">
+                <table id="tablaDevoluciones" 
+                       class="table table-striped table-sm"
+                       data-pagination="true"
+                       data-page-list="[5, 10, 20, 50]">
                     <thead>
                         <tr>
-                            <th>Id Devolución</th>
-                            <th>Id Pedido</th>
-                            <th>Fecha de Devolución</th>
-                            <th>Motivo</th>
-                            <th>Acciones</th>
+                            <th data-field="idDevolucion" data-sortable="true">Id Devolución</th>
+                            <th data-field="idPedido" data-sortable="true">Id Pedido</th>
+                            <th data-field="fechaDevolucion" data-sortable="true">Fecha de Devolución</th>
+                            <th data-field="motivo" data-sortable="true">Motivo</th>
+                            <th data-field="acciones">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -147,9 +156,7 @@
 
     $('#searchInput').on('keyup', function() {
         var value = $(this).val().toLowerCase();
-        $('#tablaDevoluciones tbody tr').filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
-        });
+        $('#tablaDevoluciones').bootstrapTable('resetSearch', value);
     });
 </script>
 
