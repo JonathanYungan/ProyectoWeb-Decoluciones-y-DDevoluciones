@@ -6,12 +6,14 @@
     <meta charset="ISO-8859-1">
     <title>Eliminar Detalle de Devolución</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap');
+
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
-            color: #333;
+            font-family: 'Playfair Display', serif;
+            background: linear-gradient(to right, #ece9e6, #ffffff);
             margin: 0;
             padding: 0;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -19,63 +21,75 @@
         }
 
         h1 {
-            color: #2c3e50;
+            color: #4CAF50; /* Verde claro */
+            margin-bottom: 20px;
+            font-size: 2.5em;
         }
 
         .container {
-            background: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            max-width: 500px;
-            width: 100%;
+            width: 70%;
+            max-width: 900px;
+            margin: 60px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
             text-align: center;
         }
 
         .details {
             margin: 20px 0;
+            padding: 20px;
+            background-color: #f0f4f7;
+            border-left: 5px solid #4CAF50; /* Verde claro */
+            border-radius: 6px;
             text-align: left;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            background-color: #f9f9f9;
         }
 
         .details strong {
             display: block;
-            margin-bottom: 10px;
-            color: #e74c3c;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            color: #333;
         }
 
-        .button-group {
-            margin-top: 20px;
+        .details p {
+            margin: 5px 0;
+            font-size: 1.1em;
         }
 
         button {
-            background-color: #3498db;
-            color: #fff;
+            padding: 12px 25px;
+            font-size: 1.2em;
             border: none;
-            border-radius: 4px;
-            padding: 10px 20px;
-            font-size: 16px;
+            border-radius: 6px;
             cursor: pointer;
+            margin: 15px;
             transition: background-color 0.3s, transform 0.3s;
-            margin: 0 10px;
+            outline: none;
         }
 
         button:hover {
-            background-color: #2980b9;
-            transform: scale(1.05);
+            transform: translateY(-3px);
         }
 
-        button.cancel {
-            background-color: #e74c3c;
+        .btn-submit {
+            background-color: #4CAF50; /* Verde claro */
+            color: white;
         }
 
-        button.cancel:hover {
-            background-color: #c0392b;
+        .btn-submit:hover {
+            background-color: #45a049; /* Verde más oscuro */
         }
 
+        .btn-cancel {
+            background-color: #3498db; /* Azul */
+            color: white;
+        }
+
+        .btn-cancel:hover {
+            background-color: #2980b9; /* Azul más oscuro */
+        }
     </style>
 </head>
 <body>
@@ -92,8 +106,8 @@
             <input type="hidden" id="idDetalleDevolucion" name="idDetalleDevolucion" value="${detalleDevolucion.idDetalleDevolucion}" />
             
             <div class="button-group">
-                <button type="submit">Eliminar</button>
-                <button type="button" class="cancel" onclick="window.location.href='/ProyectoWeb/findAll';">Cancelar</button>
+                <button type="submit" class="btn-submit">Eliminar</button>
+                <button type="button" class="btn-cancel" onclick="window.location.href='/ProyectoWeb/findAll';">Cancelar</button>
             </div>
         </form>
     </div>

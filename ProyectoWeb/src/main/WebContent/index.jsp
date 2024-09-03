@@ -5,9 +5,11 @@
     <meta charset="ISO-8859-1">
     <title>Página de Inicio</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@500&display=swap');
+
         body {
-            background-color: #e6e6fa; /* Color de fondo lavanda */
-            font-family: Arial, sans-serif;
+            background-color: #f0f8ff; /* Color de fondo azul claro */
+            font-family: 'Poppins', sans-serif;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -17,58 +19,60 @@
         }
 
         h1 {
-            color: #4682b4; /* Azul más oscuro */
-            font-size: 3.5em; /* Tamaño de fuente más grande */
-            text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5); /* Sombra pronunciada */
-            margin: 20px; /* Margen llamativo */
-            animation: bounce 2s infinite;
-            cursor: default; /* No cambia el cursor */
+            color: #2c3e50; /* Azul marino elegante */
+            font-family: 'Playfair Display', serif;
+            font-size: 4em; /* Tamaño de fuente mayor */
+            text-shadow: 4px 4px 12px rgba(0, 0, 0, 0.4); /* Sombra suave y más amplia */
+            margin: 20px;
+            animation: fadeInDown 1.5s ease-out;
+            cursor: default;
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
                 transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-30px);
-            }
-            60% {
-                transform: translateY(-15px);
             }
         }
 
         .button-container {
             display: flex;
-            gap: 20px; /* Espacio entre los botones */
-            margin-top: 40px; /* Separación respecto al título */
+            gap: 30px; /* Más espacio entre los botones */
+            margin-top: 50px;
         }
 
         .button {
-            background-color: #4682b4; /* Color azul oscuro */
+            background-color: #2980b9; /* Azul realzado */
             color: white;
+            font-family: 'Poppins', sans-serif;
             font-size: 1.5em;
-            padding: 15px 30px;
+            padding: 15px 40px; /* Tamaño de botón más generoso */
             border: none;
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: pointer;
-            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+            transition: background-color 0.4s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .button:hover {
-            background-color: #5a9bd4; /* Azul más claro al hacer hover */
-            transform: translateY(-5px);
+            background-color: #3498db; /* Azul más claro al hacer hover */
+            transform: translateY(-8px);
+            box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.4);
         }
 
         .button:active {
-            transform: translateY(2px);
+            transform: translateY(3px);
+            box-shadow: 0px 7px 15px rgba(0, 0, 0, 0.2);
         }
 
-        /* Animación de entrada de los botones */
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -77,12 +81,12 @@
         }
 
         .button {
-            animation: fadeIn 1s ease-in-out;
+            animation: fadeIn 1.2s ease-in-out;
         }
     </style>
 </head>
 <body>
-    <h1>BIENVENIDO AL CAMALEÓN SABROSO</h1>
+    <h1>BIENVENIDOS AL CAMALEÓN SABROSO</h1>
     <div class="button-container">
         <button class="button" onclick="window.location.href='http://localhost:8080/ProyectoWeb/devoluciones/findAll'">DEVOLUCIONES</button>
         <button class="button" onclick="window.location.href='http://localhost:8080/ProyectoWeb/detallesdevoluciones/findAll'">DETALLES DEVOLUCIONES</button>
